@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Homepage</title>
+</head>
+
+<link href = "lab1.css" rel = "stylesheet" type= "text/css"> 
+
+	<style>
+.boxes {
+  display: inline-block;
+  width: 360px;
+  height: 360px;
+}
+#leftBox {
+  float: left;
+}
+#rightBox {
+  float: right;
+}
+</style>
+
+<body>
+	<h1>Incremental Game</h1>
+
+	<div style="height:150px;width:1000px;background-color : grey; border:5px solid #ccc;font:20px/26px  Georgia, Garamond, Serif;overflow:auto;">
+		<p> Storyline 1 </p>
+		<p>storyline 2 </p>
+		<p>storylie 3  </p>
+		<p>storyline 4 </p>
+		</div>
+<h1>{Resource name} : </h1> 
+<button onclick="buttonClick()">ACTION</button>
+<input type="text" id="inc" value="0"></input>
+<script>
+    var i = 0;
+    function buttonClick() {
+        document.getElementById('inc').value = ++i;
+    }
+</script>
+
+<div style="height:300px;width:400px;border:5px solid #ccc;font:20px/26px Georgia, Garamond, Serif;overflow:auto;"> 
+	<h1>generator name</h1> 
+	<p1>generator description describing how much it describes per minute</p1> 
+
+
+	<form> 
+		<input type="counter" name="">
+		<p1> 10 resources </p1>
+</div> 
+
+	<div style="height:300px;width:400px;border:5px solid #ccc;font:20px/26px Georgia, Garamond, Serif;overflow:auto;">
+<h1>generator name</h1> 
+	<p1>generator description describing how much it describes per minute</p1> 
+
+
+	<form> 
+		<input type="counter" name="">
+		<p1> 10 resources </p1>
+	</div>
+
+<div style="height:300px;width:400px;border:5px solid #ccc;font:20px/26px Georgia, Garamond, Serif;overflow:auto;">
+<h1>generator name</h1> 
+	<p1>generator description describing how much it describes per minute</p1> 
+
+
+	<form> 
+		<input type="counter" name="">
+		<p1> 10 resources </p1>
+	</div>
+
+
+<script>
+
+    window.incrementalGame = {
+        state: {
+            counter: 0
+        }
+    };
+</script>
+</body>
+
+
+
+</html>
