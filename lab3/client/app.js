@@ -3,15 +3,15 @@
 class PubSub {
     constructor () {
         this.subscribers = [];
-    
+
     }
 
     // subscribe allows a new subscriber to listen for changes by providing
     // callback function in the parameter
     subscribe (fn) {
-      
+
         this.subscribers.push(fn);
-    
+
     }
 
     // one can publish any data to subscribers
@@ -27,7 +27,7 @@ class PubSub {
 
      }
 
-const pubSub = new PubSub();//created an object
+const pubSub = new PubSub();
 
 
 let ai_count = document.getElementById("ai_count");
@@ -39,7 +39,7 @@ function SUBS () {
     ai_count.innerHTML = "AI " + incrementalGame.state.counter;
 }
 
-//unable to get element by classname , 
+//unable to get element by classname ,
 //my button would disappear when i made it to a class instead id
 // i used get elementbyid instead of queryselectorall()
 
@@ -52,4 +52,3 @@ subsAI.addEventListener('click', () => {
 
 }) ;
 pubSub.subscribe(SUBS);
-
