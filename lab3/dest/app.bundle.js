@@ -787,7 +787,7 @@ function reducer(state, action) {
                 }
             });
             return state;
-        case 'BUTTON_CLICK':
+        case 'BUTTON':
             state.counter++;
             return state;
         default:
@@ -813,11 +813,7 @@ var _constants2 = _interopRequireDefault(_constants);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class Generator {
-	/**
-  * Create a new generator based on the meta object passing in
-  * @constructor
-  * @param {object} meta - meta object for constructing generator
-  */
+
 	constructor(meta) {
 		this.type = meta.type;
 		this.name = meta.name;
@@ -828,16 +824,6 @@ class Generator {
 		this.unlockValue = meta.unlockValue;
 	}
 
-	/**
-  * getCost computes cost exponentially based on quantity (as formula below)
-  * xt = x0(1 + r)^t
-  * which
-  * xt is the value of x with t quantity
-  * x0 is base value
-  * r is growth ratio (see constants.growthRatio)
-  * t is the quantity
-  * @return {number} the cost of buying another generator
-  */
 	getCost() {
 		if (this.quantity == 0) {
 			return this.baseCost;
@@ -845,12 +831,6 @@ class Generator {
 
 		return parseFloat((this.baseCost * Math.pow(1 + _constants2.default.growthRatio, this.quantity)).toFixed(2));
 	}
-
-	/**
-  * generate computes how much this type of generator generates -
-  * rate * quantity
-  * @return {number} how much this generator generates
-  */
 
 	generate() {
 
@@ -897,13 +877,15 @@ exports.default = function (store) {
 
 		connectedCallback() {
 			this.addEventListener('click', () => {
-				this.store.dispatch({ type: 'BUTTON_CLICK' });
+				this.store.dispatch({ type: 'BUTTON' });
 			});
 		}
 
 		disconnectedCallback() {
 			this.store.unsubscribe(this.onStateChange);
 		}
+		// TODO: add click event to increment counter
+		// hint: use "store.dispatch" method (see example component)
 
 	};
 };
@@ -1015,7 +997,7 @@ exports.default = function (store) {
 
             this.querySelector(".resource-button").addEventListener('click', () => {
                 this.store.dispatch({
-                    type: 'BUY_GENERATOR',
+                    type: 'BUY_',
                     payload: {
                         quantity: 1,
                         name: this.dataset.name
@@ -1028,27 +1010,15 @@ exports.default = function (store) {
             var gens = newState.generators;
 
             gens.forEach(element => {
-                if (element.name === this.dataset.name) {
-                    this.querySelector('.count-label').textContent = element.quantity;
-                    this.querySelector('.resource-button').textContent = element.unlockValue;
-                }
+                if (element.name === this.dataset.name) {}
             });
         }
 
         render() {
-            return `<div class="count-container">
-                        <label class="generator-name">
+            return `
                             ${this.dataset.name}
-                        </label>
-                        <label class="count-label">0</label>
-                    </div>
-                    <label class="generator-description">
-                        description
-                    </label>
-                    <en class="resource-button-container">  
-                        <label class="rate">45/60</label>
-                        <button class="resource-button">${this.store.state.generators[this.dataset.id].baseCost}</button>
-                    </en>`;
+                    
+                    `;
         }
 
     };

@@ -7,14 +7,15 @@ export default function (store) {
 
 		connectedCallback () {
 			this.addEventListener('click', () => {
-				this.store.dispatch({type: 'BUTTON_CLICK'});
+				this.store.dispatch({type: 'BUTTON'});
 			});
 		}
 
 		disconnectedCallback () {
 			this.store.unsubscribe(this.onStateChange);
 		}
-
+		// TODO: add click event to increment counter
+			// hint: use "store.dispatch" method (see example component)
 
 	};
 }

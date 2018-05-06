@@ -19,7 +19,7 @@
                 }
             });
             return state;
-            case 'BUTTON_CLICK':
+            case 'BUTTON':
             state.counter++;
             return state;
             default:
